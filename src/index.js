@@ -1,17 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+const Person = ({img, name, job, children}) => 
+{
+  return (
+    <article className="person">
+      <img src={`https://randomuser.me/api/portraits/thumb/men/${img}.jpg`} alt="user"/>
+      <h4>{name}</h4>
+      <h4>{job}</h4>
+      <p>{children}</p>
+    </article>
+  );
+}
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+  const PersonList = () => {
+    return (
+      <section className="personlist">
+        <Person img="50"  name="David" job="Web Developer"/>
+        <Person img="30"  name="Chris" job="Graphic Designer">
+          <p>I'm a Designer i design all type of logo's,banner's etc I'm a Designer i design all type of logo's,banner's etc</p>
+        </Person>
+        <Person img="20"  name="Jhon" job="Content Writer"/>
+      </section>
+    );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  }
+
+
+
+
+  ReactDOM.render(<PersonList />, document.getElementById('root'));
+
+
